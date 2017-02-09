@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br" ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <title>Teste Buonny</title>
+</head>
+
+<body ng-controller="IndexController as index">
+    <table>
+        <thead>
+            <tr>
+                <th>Avós</th>
+                <th>Pais</th>
+                <th>Filhos</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                <td>
+                    <select ng-model="idAvo">
+                        <option value="">Selecione</option>
+                        <option ng-repeat="avo in avos" value="{{ avo.id }}">{{ avo.nome }}</option>
+                    </select>
+                </td>
+
+                <td>
+                    <label ng-repeat="pai in pais">
+                        <input type="checkbox"
+                               ng-model="idPais[pai.id]"
+                               ng-click="changePais()"
+                               ng-true-value="{{ pai.id }}"
+                               ng-false-value="false"> {{ pai.nome }}
+                    </label>
+                </td>
+
+                <td>
+                    <p ng-repeat="filho in filhos">{{ filho.nome }}</p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script src="assets/angular/angular.min.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/services/AvosService.js"></script>
+    <script src="js/services/PaisService.js"></script>
+    <script src="js/services/FilhosService.js"></script>
+    <script src="js/controllers/IndexController.js"></script>
+</body>
+</html>
